@@ -10,7 +10,9 @@
         <router-view name="right-sidebar" />
       </aside>
     </main>
-    <footer class="app__footer">Je suis le footer</footer>
+    <footer class="app__footer">
+      <router-view name="footer" />
+    </footer>
   </div>
 </template>
 
@@ -122,6 +124,30 @@ export default {
     }
     &-3 {
       margin-bottom: var(--margin-3);
+    }
+  }
+
+  .link-action {
+    @include font-monospace();
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    margin-right: auto;
+
+    &::after {
+      content: " ";
+      margin: auto 8px;
+      background: var(--text-primary);
+      height: 1px;
+      width: 100px;
+    }
+    
+    &--reverse {
+      flex-direction: row-reverse;
+      margin-right: 0;
+      margin-left: auto;
     }
   }
 </style>
