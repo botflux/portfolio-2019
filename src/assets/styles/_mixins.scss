@@ -1,7 +1,40 @@
+@import "./variables";
+@import "./functions";
+
 @mixin font-primary () {
     font-family: 'Ubuntu', 'Roboto', 'Roboto Mono', sans-serif;
 }
 
 @mixin font-monospace () {
     font-family: 'Roboto Mono', monospace;
+}
+
+@mixin grid () {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-content: start;
+
+        &--gapped {
+            grid-gap: 16px;
+        }
+    }
+
+    @for $i from 1 through 4 {
+        .grid__column--#{$i} {
+            grid-column: span $i;
+        }
+    }
+
+    @each $breakpoint, $point in $breakpoints {
+        @media screen and (min-width: $point) {
+            $columnsCount: get-breakpoint-columns($breakpoint);
+
+            @for $i from 1 through $columnsCount {
+                .grid__column--#{$i}--#{$breakpoint} {
+                    grid-column: span $i;
+                }
+            }
+        }
+    }
 }

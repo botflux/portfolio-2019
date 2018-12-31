@@ -15,3 +15,13 @@
     --padding-overlay: 8px;
     --padding-overlay-vertical: 32px;
 }
+
+@import "./functions";
+@import "./mixins";
+
+html {
+    background: get-breakpoint("xs");
+}
+
+@include grid();
+

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import HomeFooter from './components/HomeFooter.vue'
-
+import AboutFooter from './components/AboutFooter.vue'
 
 Vue.use(Router)
 
@@ -25,7 +25,8 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       components: {
-        default: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+        default: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+        footer: AboutFooter
       }
     }
   ]

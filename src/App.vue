@@ -81,16 +81,6 @@ export default {
       margin: 60px 0;
 
       min-height: calc(100vh - 120px - var(--margin-body) * 2);
-
-      &__side {
-        &--left {
-
-        }
-
-        &--right {
-
-        }
-      }
     }
   }
 
@@ -113,6 +103,12 @@ export default {
     &--4 {
       font-size: var(--h4-font-size);
     }
+  }
+
+  .text {
+    line-height: 1.7rem;
+    text-align: justify;
+    letter-spacing: .02rem;
   }
 
   .mb {

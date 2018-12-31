@@ -1,0 +1,9 @@
+@import "./_variables.scss";
+
+@function get-breakpoint ($name) {
+    @return map-get($breakpoints, $name);
+}
+
+@function get-breakpoint-columns ($name) {
+    @return map-get($columns, $name);
+}
