@@ -1,0 +1,7 @@
+@mixin font-primary () {
+    font-family: 'Ubuntu', 'Roboto', 'Roboto Mono', sans-serif;
+}
+
+@mixin font-monospace () {
+    font-family: 'Roboto Mono', monospace;
+}
