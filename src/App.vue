@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <header class="app__header">
-      <router-link to="/">Hello world</router-link>
-    </header>
+    <app-header class="app__header"></app-header>
     <main class="app__content">
       <aside class="app__content__side app__content__side--left">
         <router-view name="left-sidebar" />
@@ -15,6 +13,19 @@
     <footer class="app__footer">Je suis le footer</footer>
   </div>
 </template>
+
+<script>
+
+import AppHeader from './components/AppHeader'
+
+export default {
+  name: 'App',
+  components: {
+    AppHeader
+  }
+}
+</script>
+
 
 <style lang="scss">
   @import "./assets/styles/app.scss";
@@ -35,6 +46,8 @@
 
     @include font-primary();
   }
+
+  h1,h2,h3,h4,h5,h6,p { margin: 0; }
 
   #app {
     margin: var(--margin-body);
@@ -63,7 +76,9 @@
 
       display: grid;
       grid-template-columns: var(--side-gutter) 1fr var(--side-gutter);
-      margin: 50px 0;
+      margin: 60px 0;
+
+      min-height: calc(100vh - 120px - var(--margin-body) * 2);
 
       &__side {
         &--left {
