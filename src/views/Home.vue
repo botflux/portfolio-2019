@@ -18,6 +18,7 @@ export default {
 
     &__p {
       font-size: var(--h3-font-size);
+      color: var(--text-secondary);
     }
   }
 </style>
