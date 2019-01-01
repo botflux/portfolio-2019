@@ -1,9 +1,24 @@
 <template>
     <header class="header">
-        <img src="../assets/img/menu.svg" alt="Menu icon">
+        <img src="../assets/img/menu.svg" alt="Menu icon" role="button" @click="changeState()">
         <router-link :to="{ 'name': 'home' }" class="header__brand">Victor Mendele</router-link>
     </header>
 </template>
+
+<script>
+import { mapActions } from 'vuex'
+import { CHANGE_STATE } from '../stores/navigation.mutations.js'
+
+export default {
+    name: 'AppHeader',
+    methods: {
+        ...mapActions('navigation', [
+            CHANGE_STATE
+        ])
+    }
+}
+</script>
+
 
 <style lang="scss">
     @import "../assets/styles/_mixins.scss";
@@ -25,8 +40,6 @@
             @include font-monospace();
         }
     }
-
-
 </style>
 
 
