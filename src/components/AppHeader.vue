@@ -12,8 +12,7 @@ export default {
     name: 'AppHeader',
     components: {
         MenuIcon
-    },
-    
+    }
 }
 </script>
 

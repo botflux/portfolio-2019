@@ -147,6 +147,10 @@ export default {
     }
   }
 
+  [role="button"] {
+    cursor: pointer;
+  }
+
   @media screen and (min-width: get-breakpoint(sm)) {
     html {
       font-size: 16px !important;

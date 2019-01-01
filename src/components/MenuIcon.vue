@@ -1,19 +1,47 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="22" viewBox="0 0 45 22" role="button" @click="changeState()">
-        <g id="menu" transform="translate(-10 -34)">
-            <rect id="Rectangle_6" data-name="Rectangle 6" width="45" height="22" transform="translate(10 34)" fill="rgba(255,255,255,0)"/>
-            <line id="Ligne_1" data-name="Ligne 1" x2="33" transform="translate(11 36)" fill="none" stroke="#000" stroke-width="2"/>
-            <line id="Ligne_2" data-name="Ligne 2" x2="22" transform="translate(11 45)" fill="none" stroke="#000" stroke-width="2"/>
-            <line id="Ligne_3" data-name="Ligne 3" x2="43" transform="translate(11 54)" fill="none" stroke="#000" stroke-width="2"/>
-        </g>
-    </svg>
+    <div role="button" class="menu-icon" @click="changeState()">
+        <span ref="line_1" class="menu-icon__element"></span>
+        <span ref="line_2" class="menu-icon__element"></span>
+        <span ref="line_3" class="menu-icon__element"></span>
+    </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
 import { CHANGE_STATE } from '../stores/navigation.mutations.js'
+import { TimelineMax, TweenMax } from 'gsap'
+
 export default {
     name: 'MenuIcon',
+    mounted() {
+        
+        const { line_1, line_2, line_3 } = this.$refs
+
+        this.timeline = new TimelineMax()
+            .fromTo(line_2, .1, {
+                opacity: 1,
+                transform: "translate(0)"
+            }, {
+                opacity: 0,
+                transform: "translate(100px)"
+            })
+            .fromTo(line_1, .2, {
+                transform: "translate(0, 0) rotate(0)"
+            }, {
+                transform: "translate(0, 12px) rotate(-45deg)"
+            })
+            .fromTo(line_3, .2, {
+                transform: "translate(0, 0) rotate(0)"
+            }, {
+                transform: "translate(0, -11px) rotate(45deg)"
+            })
+            .pause()
+    },
+    data() {
+        return {
+            timeline: null
+        }
+    },
     computed: {
         ...mapState('navigation', {
             navigationState: state => state.navState
@@ -26,8 +54,28 @@ export default {
     },
     watch: {
         navigationState(newNavigationState, oldNavigationState) {
-            console.log('Hello world')
+            console.log('hello world')
+
+            if (newNavigationState) {
+                this.timeline.play()
+            } else {
+                this.timeline.reverse()
+            }
         }
     }
 }
 </script>
+
+<style lang="scss">
+    .menu-icon {
+        display: grid;
+        width: 43px;
+        grid-gap: 9px;
+
+        &__element {
+            height: 2px;
+            background: rgba(0,0,0,.87);
+            display: block;
+        }
+    }
+</style>
