@@ -1,7 +1,7 @@
 <template>
     <div role="button" class="menu-icon" @click="changeState()">
-        <span ref="line_1" class="menu-icon__element"></span>
-        <span ref="line_2" class="menu-icon__element"></span>
+        <span ref="line_1" class="menu-icon__element menu-icon__element--1"></span>
+        <span ref="line_2" class="menu-icon__element menu-icon__element--2"></span>
         <span ref="line_3" class="menu-icon__element"></span>
     </div>
 </template>
@@ -20,15 +20,19 @@ export default {
         this.timeline = new TimelineMax()
             .fromTo(line_2, .1, {
                 opacity: 1,
-                transform: "translate(0)"
+                transform: "translate(0)",
+                width: "40%"
             }, {
                 opacity: 0,
-                transform: "translate(100px)"
+                transform: "translate(100px)",
+                width: "100%"
             })
             .fromTo(line_1, .2, {
-                transform: "translate(0, 0) rotate(0)"
+                transform: "translate(0, 0) rotate(0)",
+                width: "65%"
             }, {
-                transform: "translate(0, 12px) rotate(-45deg)"
+                transform: "translate(0, 12px) rotate(-45deg)",
+                width: "100%"
             })
             .fromTo(line_3, .2, {
                 transform: "translate(0, 0) rotate(0)"
@@ -54,8 +58,6 @@ export default {
     },
     watch: {
         navigationState(newNavigationState, oldNavigationState) {
-            console.log('hello world')
-
             if (newNavigationState) {
                 this.timeline.play()
             } else {
@@ -76,6 +78,14 @@ export default {
             height: 2px;
             background: rgba(0,0,0,.87);
             display: block;
+
+            &--1 {
+                width: 65%;
+            }
+
+            &--2 {
+                width: 40%;
+            }
         }
     }
 </style>
