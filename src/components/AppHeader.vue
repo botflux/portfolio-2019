@@ -30,6 +30,8 @@ export default {
 
         padding-top: var(--padding-overlay-vertical);
 
+        z-index: 5;
+
         &__brand {
             text-decoration: none;
             color: var(--color-primary);

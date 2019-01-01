@@ -17,14 +17,13 @@
 </template>
 
 <script>
-
 import AppHeader from './components/AppHeader'
 
 export default {
   name: 'App',
   components: {
-    AppHeader
-  }
+    AppHeader,
+  },
 }
 </script>
 
@@ -33,6 +32,17 @@ export default {
   @import "./assets/styles/app.scss";
   @import "./assets/styles/_mixins.scss";
 
+
+    .fade-enter {
+        opacity: 0;
+        position: fixed;
+        bottom: 0;
+        top: 0;
+        right: 0;
+        left: 0;
+        background: var(--foreground);
+        z-index: 4;
+    }
   html {
     font-size: 14px;
   }
