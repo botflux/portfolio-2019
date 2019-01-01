@@ -18,6 +18,18 @@
         &--gapped {
             grid-gap: 16px;
         }
+
+        &--reverse {
+            direction: rtl;
+        }
+
+        &--not-reverse {
+            direction: ltr;
+        }
+
+        &--centered {
+            align-content: center;
+        }
     }
 
     @for $i from 1 through 4 {
@@ -29,6 +41,18 @@
     @each $breakpoint, $point in $breakpoints {
         @media screen and (min-width: $point) {
             $columnsCount: get-breakpoint-columns($breakpoint);
+
+            .grid {
+                grid-template-columns: repeat($columnsCount, 1fr);
+
+                &--reverse--#{$breakpoint} {
+                    direction: rtl;
+                }
+
+                &--not-reverse--#{$breakpoint} {
+                    direction: ltr;
+                }
+            }
 
             @for $i from 1 through $columnsCount {
                 .grid__column--#{$i}--#{$breakpoint} {

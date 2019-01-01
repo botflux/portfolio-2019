@@ -146,4 +146,35 @@ export default {
       margin-left: auto;
     }
   }
+
+  @media screen and (min-width: get-breakpoint(sm)) {
+    html {
+      font-size: 16px !important;
+    }
+
+    .heading--stripped {
+      display: flex;
+
+      &::after {
+        content: " ";
+        width: 30%;
+        background: rgba(0,0,0,0.87);
+        margin: auto 0;
+        margin-left: 16px;
+        height: 2px;
+      }
+    }
+  }
+
+  @media screen and (min-width: get-breakpoint(lg)) {
+    .heading--stripped {
+      flex-direction: column;
+
+      &::after {
+        width: 100%;
+        margin: 0;
+        margin-top: 16px;
+      }
+    }
+  }
 </style>

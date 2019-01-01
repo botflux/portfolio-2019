@@ -22,10 +22,6 @@
 @include grid();
 
 @media screen and (min-width: get-breakpoint(sm)) {
-    html {
-        font-size: 16px !important;
-    }
-
     :root {
         --margin-body: 5px;
         --h1-font-size: 3.5rem;
