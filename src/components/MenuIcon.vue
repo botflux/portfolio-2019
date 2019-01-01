@@ -1,0 +1,33 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="22" viewBox="0 0 45 22" role="button" @click="changeState()">
+        <g id="menu" transform="translate(-10 -34)">
+            <rect id="Rectangle_6" data-name="Rectangle 6" width="45" height="22" transform="translate(10 34)" fill="rgba(255,255,255,0)"/>
+            <line id="Ligne_1" data-name="Ligne 1" x2="33" transform="translate(11 36)" fill="none" stroke="#000" stroke-width="2"/>
+            <line id="Ligne_2" data-name="Ligne 2" x2="22" transform="translate(11 45)" fill="none" stroke="#000" stroke-width="2"/>
+            <line id="Ligne_3" data-name="Ligne 3" x2="43" transform="translate(11 54)" fill="none" stroke="#000" stroke-width="2"/>
+        </g>
+    </svg>
+</template>
+
+<script>
+import { mapActions, mapState } from 'vuex'
+import { CHANGE_STATE } from '../stores/navigation.mutations.js'
+export default {
+    name: 'MenuIcon',
+    computed: {
+        ...mapState('navigation', {
+            navigationState: state => state.navState
+        })
+    },
+    methods: {
+        ...mapActions('navigation', [
+            CHANGE_STATE
+        ])
+    },
+    watch: {
+        navigationState(newNavigationState, oldNavigationState) {
+            console.log('Hello world')
+        }
+    }
+}
+</script>
