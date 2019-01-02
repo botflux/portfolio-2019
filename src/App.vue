@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <app-header class="app__header"></app-header>
+    <app-navigation class="app__nav"></app-navigation>
     <main class="app__content">
       <aside class="app__content__side app__content__side--left">
         <router-view name="left-sidebar" />
@@ -18,11 +19,13 @@
 
 <script>
 import AppHeader from './components/AppHeader'
+import AppNavigation from './components/AppNavigation'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
+    AppNavigation
   },
 }
 </script>
@@ -32,17 +35,6 @@ export default {
   @import "./assets/styles/app.scss";
   @import "./assets/styles/_mixins.scss";
 
-
-    .fade-enter {
-        opacity: 0;
-        position: fixed;
-        bottom: 0;
-        top: 0;
-        right: 0;
-        left: 0;
-        background: var(--foreground);
-        z-index: 4;
-    }
   html {
     font-size: 14px;
   }
@@ -58,6 +50,8 @@ export default {
 
     @include font-primary();
   }
+
+
 
   h1,h2,h3,h4,h5,h6,p { margin: 0; }
 
@@ -91,6 +85,18 @@ export default {
       margin: 60px 0;
 
       min-height: calc(100vh - 120px - var(--margin-body) * 2);
+    }
+
+    &__nav {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      top: 0;
+
+      background: var(--foreground);
+
+      z-index: 4;
     }
   }
 
@@ -159,6 +165,10 @@ export default {
 
   [role="button"] {
     cursor: pointer;
+  }
+
+  [aria-hidden="true"] {
+    display: none;
   }
 
   @media screen and (min-width: get-breakpoint(sm)) {

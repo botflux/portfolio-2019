@@ -1,0 +1,89 @@
+<template>
+    <nav class="nav" ref="nav">
+        <ul class="nav__list">
+            <li class="nav__list__item" ref="l1">
+                <router-link class="nav__link" :to="{ 'name': 'home' }">Acceuil</router-link>
+            </li>
+            <li class="nav__list__item" ref="l2">
+                <router-link class="nav__link" :to="{ 'name': 'home' }">A propos</router-link>
+            </li>
+            <li class="nav__list__item" ref="l3">
+                <router-link class="nav__link" :to="{ 'name': 'home' }">Projets</router-link>
+            </li>
+            <li class="nav__list__item" ref="l4">
+                <router-link class="nav__link" :to="{ 'name': 'home' }">Contact</router-link>
+            </li>
+            <li class="nav__list__item" ref="l5">
+                <router-link class="nav__link" :to="{ 'name': 'home' }">CV</router-link>
+            </li>
+        </ul>
+    </nav>    
+</template>
+
+<script>
+import { mapState } from 'vuex'
+import { TimelineMax } from 'gsap'
+
+export default {
+    name: 'AppNavigation',
+    mounted () {
+        let { nav, l1, l2, l3, l4, l5 } = this.$refs
+        let l = [l1, l2, l3, l4, l5]
+
+        this.timeline = new TimelineMax({ paused: true })
+            .fromTo (nav, .001, { display: 'none' }, { display: 'grid' })
+            .fromTo (nav, .3, { transform: 'scale(.9)', opacity: 1 }, { transform: 'scale(1)', opacity: 1} )
+            .staggerFromTo (l, .1, {transform: 'translate(-100px)', opacity: 0}, { transform: 'translate(0)', opacity: 1 }, .1)
+    },
+    data() {
+        return {
+            timeline: null
+        }
+    },
+    computed: {
+        ...mapState('navigation', {
+            navigationState: state => state.navState
+        })
+    },
+    watch: {
+        navigationState(newNavigationState, oldNavigationState) {
+            if (newNavigationState) {
+                this.timeline.play()
+            } else {
+                this.timeline.reverse()
+            }
+        }
+    }
+}
+</script>
+
+
+<style lang="scss">
+    .nav {
+        display: none;
+        padding-left: 3rem;
+
+        &__list {
+            margin: auto 0;
+            display: grid;
+            margin: 0;
+            padding: 0;
+            grid-template-columns: .9fr;
+            align-content: center;
+            align-items: center;
+
+            &__item {
+                list-style: none;
+            }
+        }
+
+        &__link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: var(--h2-font-size);
+            text-transform: lowercase;
+            letter-spacing: .1rem;
+        }
+    }
+</style>
+
