@@ -2,26 +2,26 @@
     <nav class="nav" ref="nav">
         <ul class="nav__list">
             <li class="nav__list__item" ref="l1">
-                <router-link class="nav__link" :to="{ 'name': 'home' }">Acceuil</router-link>
+                <router-link class="nav__link" :to="{ 'name': 'home' }" @click.native="changeState()">Acceuil</router-link>
             </li>
             <li class="nav__list__item" ref="l2">
-                <router-link class="nav__link" :to="{ 'name': 'home' }">A propos</router-link>
+                <router-link class="nav__link" :to="{ 'name': 'about' }" @click.native="changeState()">A propos</router-link>
             </li>
             <li class="nav__list__item" ref="l3">
-                <router-link class="nav__link" :to="{ 'name': 'home' }">Projets</router-link>
+                <router-link class="nav__link" :to="{ 'name': 'home' }" @click.native="changeState()">Projets</router-link>
             </li>
             <li class="nav__list__item" ref="l4">
-                <router-link class="nav__link" :to="{ 'name': 'home' }">Contact</router-link>
+                <router-link class="nav__link" :to="{ 'name': 'home' }" @click.native="changeState()">Contact</router-link>
             </li>
             <li class="nav__list__item" ref="l5">
-                <router-link class="nav__link" :to="{ 'name': 'home' }">CV</router-link>
+                <router-link class="nav__link" :to="{ 'name': 'home' }" @click.native="changeState()">CV</router-link>
             </li>
         </ul>
     </nav>    
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import { TimelineMax } from 'gsap'
 
 export default {
@@ -40,13 +40,18 @@ export default {
             timeline: null
         }
     },
+    methods: {
+        ...mapActions('navigation', [
+            "changeState"
+        ])
+    },
     computed: {
         ...mapState('navigation', {
             navigationState: state => state.navState
         })
     },
     watch: {
-        navigationState(newNavigationState, oldNavigationState) {
+        navigationState(newNavigationState) {
             if (newNavigationState) {
                 this.timeline.play()
             } else {
