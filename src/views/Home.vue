@@ -14,8 +14,6 @@ export default {
 
 <style lang="scss">
   .home {
-    margin: auto 0;
-
     &__p {
       font-size: var(--h3-font-size);
       color: var(--text-secondary);

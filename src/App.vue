@@ -2,17 +2,27 @@
   <div id="app">
     <app-header class="app__header"></app-header>
     <app-navigation class="app__nav"></app-navigation>
-    <main class="app__content">
-      <aside class="app__content__side app__content__side--left">
-        <router-view name="left-sidebar" />
-      </aside>
-      <router-view/>
-      <aside class="app__content__side app__content__side--right">
-        <router-view name="right-sidebar" />
-      </aside>
-    </main>
+      <main class="app__content">
+        <transition 
+          v-on:before-enter="beforeEnter"
+          v-on:enter="enter"
+          v-on:after-enter="afterEnter"
+          v-on:before-leave="beforeLeave" 
+          v-on:leave="leave"
+          v-on:after-leave="afterLeave">
+          <router-view/>
+        </transition>
+      </main>
     <footer class="app__footer">
-      <router-view name="footer" />
+        <transition 
+          v-on:before-enter="beforeEnter"
+          v-on:enter="enterFooter"
+          v-on:after-enter="afterEnter"
+          v-on:before-leave="beforeLeave" 
+          v-on:leave="leaveFooter"
+          v-on:after-leave="afterLeave">
+        <router-view name="footer" />
+        </transition>
     </footer>
   </div>
 </template>
@@ -20,6 +30,7 @@
 <script>
 import AppHeader from './components/AppHeader'
 import AppNavigation from './components/AppNavigation'
+import { TweenMax } from 'gsap'
 
 export default {
   name: 'App',
@@ -27,6 +38,37 @@ export default {
     AppHeader,
     AppNavigation
   },
+  methods: {
+    beforeEnter (e) {
+      e.classList.add('fixed')
+    },
+    enter (e, done) {
+      TweenMax.fromTo(e, .3, { transform: 'translate(0, -500px)', opacity: 0 }, { transform: 'translate(0, 0)', opacity: 1, onComplete: done })
+    },
+    enterFooter (e, done) {
+      TweenMax.fromTo(e, .5, {
+        opacity: 0
+      }, {
+        opacity: 1,
+        onComplete: done
+      })
+    },
+    afterEnter (e) {
+      e.classList.remove('fixed')
+    },
+    beforeLeave (e) {
+      e.classList.add('fixed')
+    },
+    leave (e, done) {
+      TweenMax.fromTo (e, .3, { transform: 'translate(0, 0)', opacity: 1 }, { transform: 'translate(0, 500px)', opacity: 0, onComplete: done })
+    },
+    leaveFooter (e, done) {
+      TweenMax.fromTo(e, .5, { opacity: 1 }, { opacity: 0, onComplete: done })
+    },
+    afterLeave (e) {
+      e.classList.remove('fixed')
+    }
+  }
 }
 </script>
 
@@ -50,8 +92,6 @@ export default {
 
     @include font-primary();
   }
-
-
 
   h1,h2,h3,h4,h5,h6,p { margin: 0; }
 
@@ -80,8 +120,14 @@ export default {
 
     &__content {
 
+      display: block;
+      padding-left: var(--side-gutter);
+      padding-right: var(--side-gutter);
+      /*
       display: grid;
-      grid-template-columns: var(--side-gutter) 1fr var(--side-gutter);
+      grid-template-columns: var(--side-gutter) 1fr var(--side-gutter);*/
+      display: flex;
+      align-items: center;
       margin: 60px 0;
 
       min-height: calc(100vh - 120px - var(--margin-body) * 2);
@@ -98,6 +144,11 @@ export default {
 
       z-index: 4;
     }
+  }
+
+  .fixed {
+    position: fixed;
+    width: inherit;
   }
 
   .heading {
