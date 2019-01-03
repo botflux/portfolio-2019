@@ -39,35 +39,14 @@ export default {
     AppNavigation
   },
   methods: {
-    beforeEnter (e) {
-      e.classList.add('fixed')
-    },
-    enter (e, done) {
-      TweenMax.fromTo(e, .3, { transform: 'translate(0, -500px)', opacity: 0 }, { transform: 'translate(0, 0)', opacity: 1, onComplete: done })
-    },
-    enterFooter (e, done) {
-      TweenMax.fromTo(e, .5, {
-        opacity: 0
-      }, {
-        opacity: 1,
-        onComplete: done
-      })
-    },
-    afterEnter (e) {
-      e.classList.remove('fixed')
-    },
-    beforeLeave (e) {
-      e.classList.add('fixed')
-    },
-    leave (e, done) {
-      TweenMax.fromTo (e, .3, { transform: 'translate(0, 0)', opacity: 1 }, { transform: 'translate(0, 500px)', opacity: 0, onComplete: done })
-    },
-    leaveFooter (e, done) {
-      TweenMax.fromTo(e, .5, { opacity: 1 }, { opacity: 0, onComplete: done })
-    },
-    afterLeave (e) {
-      e.classList.remove('fixed')
-    }
+    beforeEnter (e) { e.classList.add('fixed') },
+    enter (e, done) { TweenMax.fromTo(e, .3, { transform: 'translate(0, -500px)', opacity: 0 }, { transform: 'translate(0, 0)', opacity: 1, onComplete: done }) },
+    enterFooter (e, done) { TweenMax.fromTo(e, .5, { opacity: 0 }, { opacity: 1, onComplete: done }) },
+    afterEnter (e) { e.classList.remove('fixed') },
+    beforeLeave (e) { e.classList.add('fixed') },
+    leave (e, done) { TweenMax.fromTo (e, .3, { transform: 'translate(0, 0)', opacity: 1 }, { transform: 'translate(0, 500px)', opacity: 0, onComplete: done }) },
+    leaveFooter (e, done) { TweenMax.fromTo(e, .5, { opacity: 1 }, { opacity: 0, onComplete: done }) },
+    afterLeave (e) { e.classList.remove('fixed') }
   }
 }
 </script>
@@ -123,9 +102,7 @@ export default {
       display: block;
       padding-left: var(--side-gutter);
       padding-right: var(--side-gutter);
-      /*
-      display: grid;
-      grid-template-columns: var(--side-gutter) 1fr var(--side-gutter);*/
+      
       display: flex;
       align-items: center;
       margin: 60px 0;
