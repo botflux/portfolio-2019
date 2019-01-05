@@ -9,7 +9,7 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import { CHANGE_STATE } from '../stores/navigation.mutations.js'
-import { TimelineMax, TweenMax } from 'gsap'
+import { TimelineMax } from 'gsap'
 
 export default {
     name: 'MenuIcon',
