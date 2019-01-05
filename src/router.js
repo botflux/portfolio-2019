@@ -5,6 +5,7 @@ import HomeFooter from './components/HomeFooter.vue'
 import AboutFooter from './components/AboutFooter.vue'
 import Projects from './views/Projects.vue'
 import Project from './views/Project.vue'
+import ProjectFooter from './components/ProjectFooter'
 
 Vue.use(Router)
 
@@ -16,8 +17,8 @@ export default new Router({
       path: '/',
       name: 'home',
       components: {
-        default: Home,
-        footer: HomeFooter
+        default: () => import('./views/Home.vue'),
+        footer: () => import('./components/HomeFooter.vue')
       }
     },
     {
@@ -28,20 +29,22 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       components: {
         default: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
-        footer: AboutFooter
+        footer: () => import('./components/AboutFooter.vue')
       }
     },
     {
       path: '/project',
-      name: 'project',
+      name: 'projects',
       components: {
-        default: Projects
+        default: () => import('./views/Projects.vue')
       }
     },
     {
       path: '/project/:id',
+      name: 'project',
       components: {
-        default: Project
+        default: () => import('./views/Project.vue'),
+        footer: () => import('./components/ProjectFooter.vue')
       }
     }
   ]

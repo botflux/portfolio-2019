@@ -1,6 +1,6 @@
 <template>
     <app-footer>
-        <router-link :to="{ 'name': 'project' }" class="link-action">Projets</router-link>
+        <router-link :to="{ 'name': 'projects' }" class="link-action">Projets</router-link>
         <router-link :to="{ 'name': 'home' }" class="link-action link-action--reverse">Compétences</router-link>
     </app-footer>
 </template>

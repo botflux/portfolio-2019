@@ -2,7 +2,7 @@
     <div class="projects grid grid--gapped grid__column--4 grid__column--8--sm grid__column--12--lg">
         <h1 class="heading heading--1 heading--stripped grid__column--4 grid__column--8--sm grid__column--4--lg mb-1">Projets</h1>
         <section class="grid grid__column--4 grid__column--8--sm grid__column--12--lg">
-            <project-element class="grid__column--4 grid__column--8--sm grid__column--12--lg mb-1" v-for="project in projects.edges" :key="project.node.id" :id="project.node.id" :title="project.node.title" :description="project.node.description" :filename="getProjectImage(project.node.filename)"></project-element>
+            <project-element class="grid__column--4 grid__column--8--sm grid__column--12--lg mb-1" v-for="project in projects.edges" :key="project.node.id" :id="project.node.id" :title="project.node.title" :description="project.node.description" :filename="getProjectImage(project.node.filename)" :_id="project.node._id"></project-element>
         </section>
     </div>
 </template>
@@ -25,6 +25,7 @@ export default {
                         filename
                         title
                         description
+                        _id
                     }
                 }
             }

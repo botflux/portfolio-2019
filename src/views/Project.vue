@@ -5,7 +5,7 @@
             <h1 class="heading heading--3">{{ project.title }}</h1>
         </header>
         <p class="text mb-1">{{ project.description }}</p>
-        <img :src="`http://localhost:8000/images/projects/${(project.filename !== undefined && project.filename !== null) ? project.filename : 'no.jpg'}`" alt="" class="project__img mb-1">
+        <img :src="`http://localhost:8000/images/projects/${(project.filename !== undefined && project.filename !== null) ? project.filename : 'no.jpg'}`" :alt="project.title" class="project__img mb-1">
         <div class="project__body grid grid--gapped">
             <div class="project__body__element grid__column--4 grid__column--8--sm grid__column--6--lg mb-1">
                 <h2 class="heading--2 heading mb-2">Difficultés</h2>

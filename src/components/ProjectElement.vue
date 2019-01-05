@@ -3,7 +3,8 @@
         <img :src="filename" :alt="title" class="project__element__img mb-2 grid__column--4 grid__column--8--sm grid__column--4--md grid__column--6--lg">
         <div class="project__element__body grid__column--4 grid__column--8--sm grid__column--4--md grid__column--6--lg">
             <h2 class="heading heading--3 mb-2">{{ title }}</h2>
-            <p class="text">{{ description }}</p>
+            <p class="text mb-1">{{ description }}</p>
+            <router-link :to="{ name: 'project', params: { id: _id } }" class="link">En savoir plus</router-link>
         </div>
     </article>
 </template>
@@ -27,14 +28,24 @@ export default {
         id: String,
         filename: String,
         title: String,
-        description: String
+        description: String,
+        _id: Number
     }
 }
 </script>
 
 <style lang="scss">
     @import "../assets/styles/_functions.scss";
-    
+    @import "../assets/styles/_mixins.scss";
+
+    .link {
+        @include font-monospace();
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 700;
+        color: var(--text-primary);
+    }
+
     .project__element {
         margin-top: var(--margin-2);
         margin-bottom: var(--margin-2);
