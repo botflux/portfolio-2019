@@ -1,5 +1,5 @@
 <template>
-    <section class="project">
+    <section class="project" v-if="!$apollo.loading">
         <header class="project__header mb-1">
             <h2 class="heading heading--1 grid__column">Projets</h2>
             <h1 class="heading heading--3">{{ project.title }}</h1>
@@ -21,16 +21,21 @@
             </div>
         </div>
     </section>
+    <pulse-loader color="#000000" v-else class="project__loader"></pulse-loader>
 </template>
 
 <script>
 import gql from 'graphql-tag'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
 export default {
     data () {
         return {
             project: {}
         }
+    },
+    components: {
+        PulseLoader
     },
     apollo: {
         project: {
@@ -69,6 +74,10 @@ export default {
 
         &__body {
             grid-column-gap: 64px;
+        }
+
+        &__loader {
+            margin: auto;
         }
     }
 

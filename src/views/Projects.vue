@@ -1,7 +1,8 @@
 <template>
     <div class="projects grid grid--gapped grid__column--4 grid__column--8--sm grid__column--12--lg">
         <h1 class="heading heading--1 heading--stripped grid__column--4 grid__column--8--sm grid__column--4--lg mb-1">Projets</h1>
-        <section class="grid grid__column--4 grid__column--8--sm grid__column--12--lg">
+        <pulse-loader class="projects__loader grid__column--4 grid__column--8--sm grid__column--12--lg" color="#000000" v-if="$apollo.loading" ></pulse-loader>
+        <section class="grid grid__column--4 grid__column--8--sm grid__column--12--lg" v-show="!$apollo.loading">
             <project-element class="grid__column--4 grid__column--8--sm grid__column--12--lg mb-1" v-for="project in projects.edges" :key="project.node.id" :id="project.node.id" :title="project.node.title" :description="project.node.description" :filename="getProjectImage(project.node.filename)" :_id="project.node._id"></project-element>
         </section>
     </div>
@@ -10,10 +11,12 @@
 <script>
 import gql from 'graphql-tag'
 import ProjectElement from '../components/ProjectElement'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
 export default {
     components: {
-        ProjectElement
+        ProjectElement,
+        PulseLoader
     },
     apollo: {
         projects: gql`
@@ -54,5 +57,9 @@ export default {
 <style lang="scss">
     .projects {
         width: 100%;
+
+        &__loader {
+            margin: 0 auto;
+        }
     }
 </style>
