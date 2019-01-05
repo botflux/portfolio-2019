@@ -38,6 +38,13 @@ export default {
     AppHeader,
     AppNavigation
   },
+  apollo: {
+    
+  },
+  data () {
+    return {
+    }
+  },
   methods: {
     beforeEnter (e) { e.classList.add('fixed') },
     enter (e, done) { TweenMax.fromTo(e, .3, { transform: 'translate(0, -500px)', opacity: 0 }, { transform: 'translate(0, 0)', opacity: 1, onComplete: done }) },
@@ -47,7 +54,7 @@ export default {
     leave (e, done) { TweenMax.fromTo (e, .3, { transform: 'translate(0, 0)', opacity: 1 }, { transform: 'translate(0, 500px)', opacity: 0, onComplete: done }) },
     leaveFooter (e, done) { TweenMax.fromTo(e, .5, { opacity: 1 }, { opacity: 0, onComplete: done }) },
     afterLeave (e) { e.classList.remove('fixed') }
-  }
+  },
 }
 </script>
 

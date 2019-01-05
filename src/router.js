@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import HomeFooter from './components/HomeFooter.vue'
 import AboutFooter from './components/AboutFooter.vue'
+import Project from './views/Project.vue'
 
 Vue.use(Router)
 
@@ -27,6 +28,13 @@ export default new Router({
       components: {
         default: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
         footer: AboutFooter
+      }
+    },
+    {
+      path: '/project',
+      name: 'project',
+      components: {
+        default: Project
       }
     }
   ]
