@@ -8,7 +8,7 @@
                 <router-link class="nav__link" :to="{ 'name': 'about' }" @click.native="changeState()">A propos</router-link>
             </li>
             <li class="nav__list__item" ref="l3">
-                <router-link class="nav__link" :to="{ 'name': 'home' }" @click.native="changeState()">Projets</router-link>
+                <router-link class="nav__link" :to="{ 'name': 'project' }" @click.native="changeState()">Projets</router-link>
             </li>
             <li class="nav__list__item" ref="l4">
                 <router-link class="nav__link" :to="{ 'name': 'home' }" @click.native="changeState()">Contact</router-link>

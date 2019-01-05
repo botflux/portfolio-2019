@@ -111,7 +111,7 @@ export default {
       padding-right: var(--side-gutter);
       
       display: flex;
-      align-items: center;
+      //align-items: center;
       margin: 60px 0;
 
       min-height: calc(100vh - 120px - var(--margin-body) * 2);
