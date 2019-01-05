@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import HomeFooter from './components/HomeFooter.vue'
 import AboutFooter from './components/AboutFooter.vue'
+import Projects from './views/Projects.vue'
 import Project from './views/Project.vue'
 
 Vue.use(Router)
@@ -33,6 +34,12 @@ export default new Router({
     {
       path: '/project',
       name: 'project',
+      components: {
+        default: Projects
+      }
+    },
+    {
+      path: '/project/:id',
       components: {
         default: Project
       }

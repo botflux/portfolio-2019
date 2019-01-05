@@ -1,49 +1,56 @@
 <template>
-    <div class="project grid grid--gapped grid__column--4 grid__column--8--sm grid__column--12--lg">
-        <h1 class="heading heading--1 heading--stripped grid__column--4 grid__column--8--sm grid__column--4--lg mb-1">Projets</h1>
-        <section class="grid grid__column--4 grid__column--8--sm grid__column--12--lg">
-            <project-element class="grid__column--4 grid__column--8--sm grid__column--12--lg mb-1" v-for="project in projects.edges" :key="project.node.id" :id="project.node.id" :title="project.node.title" :description="project.node.description" :filename="getProjectImage(project.node.filename)"></project-element>
-        </section>
-    </div>
+    <section class="project">
+        <header class="project__header mb-1">
+            <h2 class="heading heading--1 grid__column">Projets</h2>
+            <h1 class="heading heading--3">{{ project.title }}</h1>
+        </header>
+        <p class="text mb-1">{{ project.description }}</p>
+        <img :src="`http://localhost:8000/images/projects/${(project.filename !== undefined && project.filename !== null) ? project.filename : 'no.jpg'}`" alt="" class="project__img mb-1">
+        <div class="project__body grid grid--gapped">
+            <div class="project__body__element grid__column--4 grid__column--8--sm grid__column--6--lg mb-1">
+                <h2 class="heading--2 heading mb-2">Difficultés</h2>
+                <p class="text">{{ project.difficulties }}</p>
+            </div>
+            <div class="project__body__element grid__column--4 grid__column--8--sm grid__column--6--lg mb-1">
+                <h2 class="heading heading--2 grid__column--4 mb-2">Équipe</h2>
+                <p class="text">{{ project.team }}</p>
+            </div>
+            <div class="project__body__element grid__column--4 grid__column--8--sm grid__column--6--lg mb-1">
+                <h2 class="heading heading--2 grid__column--4 mb-2">Mon rôle</h2>
+                <p class="text">{{ project.role }}</p>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
 import gql from 'graphql-tag'
-import ProjectElement from '../components/ProjectElement'
 
 export default {
-    components: {
-        ProjectElement
+    data () {
+        return {
+            project: {}
+        }
     },
     apollo: {
-        projects: gql`
-            query {
-                projects {
-                edges {
-                    node {
-                        id
-                        filename
+        project: {
+            query: gql`
+            query getProject($id: ID!) {
+                    project(id: $id) {
                         title
+                        filename
+                        difficulties
+                        role
+                        team
                         description
                     }
                 }
+            `,
+            variables() {
+                return {
+                    id: `/api/projects/${this.$route.params.id}`
+                }
             }
-        }
-        `
-    },
-    data () {
-        return {
-            projects: {}
-        }
-    },
-    methods: {
-        getProjectImage (filename) {
-            const path = `http://localhost:8000/images/projects/`
-            if (filename === undefined || filename === null) {
-                return `${path}no.jpg`
-            }
-
-            return `${path}${filename}`
         }
     }
 }
@@ -51,7 +58,34 @@ export default {
 
 
 <style lang="scss">
+    @import "../assets/styles/_functions.scss";
+    
     .project {
-        width: 100%;
+        &__img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        &__body {
+            grid-column-gap: 64px;
+        }
+    }
+
+    @media screen and (min-width: get-breakpoint(sm)) {
+        .project {
+            &__img {
+                height: 450px;
+            }
+        }
+    }
+
+    @media screen and (min-width: get-breakpoint(lg)) {
+        .project {
+            &__img {
+                height: 550px;
+            }
+        }
     }
 </style>
+
