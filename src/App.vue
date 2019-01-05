@@ -207,13 +207,22 @@ export default {
       margin: auto 8px;
       background: var(--text-primary);
       height: 1px;
-      width: 100px;
+      animation: link-action-appear .2s ease-out 1s forwards;
     }
     
     &--reverse {
       flex-direction: row-reverse;
       margin-right: 0;
       margin-left: auto;
+    }
+  }
+
+  @keyframes link-action-appear {
+    from {
+      width: 0;
+    }
+    to {
+      width: 50px;
     }
   }
 
@@ -240,6 +249,15 @@ export default {
         margin: auto 0;
         margin-left: 16px;
         height: 2px;
+      }
+    }
+
+    @keyframes link-action-appear {
+      from {
+        width: 0;
+      }
+      to {
+        width: 120px;
       }
     }
   }
