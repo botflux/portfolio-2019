@@ -4,7 +4,7 @@
         <div class="project__element__body grid__column--4 grid__column--8--sm grid__column--4--md grid__column--6--lg">
             <h2 class="heading heading--3 mb-2">{{ title }}</h2>
             <p class="text mb-1">{{ description }}</p>
-            <router-link :to="{ name: 'project', params: { id: _id } }" class="link">En savoir plus</router-link>
+            <router-link :to="{ name: 'project', params: { id } }" class="link">En savoir plus</router-link>
         </div>
     </article>
 </template>
@@ -25,11 +25,10 @@ export default {
         }
     },
     props: {
-        id: String,
+        id: Number,
         filename: String,
         title: String,
         description: String,
-        _id: Number
     }
 }
 </script>
