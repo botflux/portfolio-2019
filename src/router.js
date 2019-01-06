@@ -67,6 +67,13 @@ const router = new Router({
         default: () => import('./views/Project.vue'),
         footer: () => import('./components/ProjectFooter.vue')
       }
+    },
+    {
+      path: '*',
+      name: 'notfound',
+      components: {
+        default: () => import('./views/404.vue')
+      }
     }
   ],
 })
