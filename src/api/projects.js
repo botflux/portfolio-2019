@@ -15,7 +15,6 @@ export default {
         return data
     },
     getProject: (id) => {
-        console.log('helllooo', id)
         return data.find(e => {return e.id == id})
     }
 }
