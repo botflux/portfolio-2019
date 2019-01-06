@@ -7,5 +7,5 @@
     RewriteRule ^ index.html [QSA,L]
 
     RewriteCond %{SERVER_PORT} 80
-    RewriteRule ^(.*)$ https://www.victormendele.fr/$1 [R,L]
+    RewriteRule ^(.*)$ https://victormendele.fr/ [R,L]
 </IfModule>
