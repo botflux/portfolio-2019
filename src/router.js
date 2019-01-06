@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -13,6 +13,15 @@ export default new Router({
       components: {
         default: () => import('./views/Home.vue'),
         footer: () => import('./components/HomeFooter.vue')
+      },
+      meta: {
+        title: 'Victor Mendele',
+        metaTags: [
+          {
+            name: 'Description',
+            content: `Passionné par le développement depuis quelques années, j'ai commencé avec des technologies natives avant de tomber amoureux du web.`
+          }
+        ]
       }
     },
     {
@@ -24,6 +33,15 @@ export default new Router({
       components: {
         default: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
         footer: () => import('./components/AboutFooter.vue')
+      },
+      meta: {
+        title: 'Victor Mendele - A propos',
+        metaTags: [
+          {
+            name: 'Description',
+            content: `Je suis actuellement étudiant en licence professionnelle métiers du numérique parcours Développeur Web / Designer Web à l'IUT de Mulhouse. J'ai commencé le développement avec Unity il y a quelques années, avant de m'intéresser au Web.`
+          }
+        ]
       }
     },
     {
@@ -31,6 +49,15 @@ export default new Router({
       name: 'projects',
       components: {
         default: () => import('./views/Projects.vue')
+      },
+      meta: {
+        title: 'Victor Mendele - Projects',
+        metaTags: [
+          {
+            name: 'Description',
+            content: 'Voici une sélection de différents projets sur lesquels j\'ai pu travailler'
+          }
+        ]
       }
     },
     {
@@ -41,5 +68,21 @@ export default new Router({
         footer: () => import('./components/ProjectFooter.vue')
       }
     }
-  ]
+  ],
 })
+
+router.afterEach((to) => {
+  if (to.meta.title !== undefined) {
+    document.title = to.meta.title
+  }
+  if (to.meta.metaTags !== undefined) {
+    to.meta.metaTags.forEach(m => {
+      let element = document.head.querySelector(`meta[name=${m.name}]`)
+      if (element !== undefined && element !== null) {
+        element.setAttribute('content', m.content)
+      }
+    })
+  }
+})
+
+export default router
