@@ -230,10 +230,6 @@ export default {
     cursor: pointer;
   }
 
-  [aria-hidden="true"] {
-    display: none;
-  }
-
   @media screen and (min-width: get-breakpoint(sm)) {
     html {
       font-size: 16px !important;

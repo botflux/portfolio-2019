@@ -11,29 +11,51 @@
                 <router-link class="nav__link" :to="{ 'name': 'projects' }" @click.native="changeState()">Projets</router-link>
             </li>
             <li class="nav__list__item" ref="l4">
-                <router-link class="nav__link" :to="{ 'name': 'home' }" @click.native="changeState()">Contact</router-link>
+                <a class="nav__link" href="mailto:victor.mendele68@gmail.com">Contact</a>
             </li>
             <li class="nav__list__item" ref="l5">
-                <router-link class="nav__link" :to="{ 'name': 'home' }" @click.native="changeState()">CV</router-link>
+                <a class="nav__link" href="https://www.dropbox.com/s/b2aqhluhkwzl69b/CV.pdf?dl=0" target="_blank">CV</a>
             </li>
         </ul>
+        <div class="nav__icons" ref="icons">
+            <a href="https://www.pinterest.fr/mendelevictor/" rel="noopener" target="_blank">
+                <font-awesome-icon :icon="['fab', 'pinterest']" class="nav__icon"></font-awesome-icon>
+            </a>
+            
+            <a href="https://codepen.io/botflux/" rel="noopener" target="_blank">
+                <font-awesome-icon :icon="['fab', 'codepen']" class="nav__icon"></font-awesome-icon>
+            </a>
+            
+            <a href="https://github.com/botflux" rel="noopener" target="_blank">
+                <font-awesome-icon :icon="['fab', 'github']" class="nav__icon"></font-awesome-icon>
+            </a>
+            
+            <a href="https://www.linkedin.com/in/victor-mendele-698517154/" rel="noopener" target="_blank">
+                <font-awesome-icon :icon="['fab', 'linkedin']" class="nav__icon"></font-awesome-icon>
+            </a>
+        </div>
     </nav>    
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
 import { TimelineMax } from 'gsap'
+import FontAwesomeIcon from './FontAwesomeIcon'
 
 export default {
     name: 'AppNavigation',
+    components: {
+        FontAwesomeIcon
+    },
     mounted () {
-        let { nav, l1, l2, l3, l4, l5 } = this.$refs
+        let { nav, l1, l2, l3, l4, l5, icons } = this.$refs
         let l = [l1, l2, l3, l4, l5]
 
         this.timeline = new TimelineMax({ paused: true })
             .fromTo (nav, .001, { display: 'none' }, { display: 'grid' })
             .fromTo (nav, .3, { transform: 'scale(.9)', opacity: 1 }, { transform: 'scale(1)', opacity: 1} )
             .staggerFromTo (l, .1, {transform: 'translate(-100px)', opacity: 0}, { transform: 'translate(0)', opacity: 1 }, .1)
+            .fromTo (icons, .2, { opacity: 0 }, { opacity: 1 })
     },
     data() {
         return {
@@ -67,6 +89,14 @@ export default {
     .nav {
         display: none;
         padding-left: 3rem;
+        align-content: center;
+        grid-gap: 3rem;
+
+        &__icon {
+            font-size: 2rem;
+            color: var(--text-primary);
+            padding: 1rem;
+        }
 
         &__list {
             margin: auto 0;
