@@ -11,10 +11,10 @@
                 <router-link class="nav__link" :to="{ 'name': 'projects' }" @click.native="changeState()">Projets</router-link>
             </li>
             <li class="nav__list__item" ref="l4">
-                <a class="nav__link" href="mailto:victor.mendele68@gmail.com">Contact</a>
+                <a class="nav__link" href="mailto:victor.mendele68@gmail.com" rel="noopener">Contact</a>
             </li>
             <li class="nav__list__item" ref="l5">
-                <a class="nav__link" href="https://www.dropbox.com/s/b2aqhluhkwzl69b/CV.pdf?dl=0" target="_blank">CV</a>
+                <a class="nav__link" href="https://www.dropbox.com/s/b2aqhluhkwzl69b/CV.pdf?dl=0" target="_blank" rel="noopener">CV</a>
             </li>
         </ul>
         <div class="nav__icons" ref="icons">

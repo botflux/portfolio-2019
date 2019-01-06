@@ -1,5 +1,5 @@
 <template>
-    <div role="button" class="menu-icon" @click="changeState()">
+    <div class="menu-icon" @click="changeState()">
         <span ref="line_1" class="menu-icon__element menu-icon__element--1"></span>
         <span ref="line_2" class="menu-icon__element menu-icon__element--2"></span>
         <span ref="line_3" class="menu-icon__element"></span>
