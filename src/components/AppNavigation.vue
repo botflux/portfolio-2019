@@ -8,12 +8,15 @@
                 <router-link class="nav__link" :to="{ 'name': 'about' }" @click.native="changeState()">A propos</router-link>
             </li>
             <li class="nav__list__item" ref="l3">
-                <router-link class="nav__link" :to="{ 'name': 'projects' }" @click.native="changeState()">Projets</router-link>
+                <router-link class="nav__link" :to="{ 'name': 'skill' }" @click.native="changeState()">Compétences</router-link>
             </li>
             <li class="nav__list__item" ref="l4">
-                <a class="nav__link" href="mailto:victor.mendele68@gmail.com" rel="noopener">Contact</a>
+                <router-link class="nav__link" :to="{ 'name': 'projects' }" @click.native="changeState()">Projets</router-link>
             </li>
             <li class="nav__list__item" ref="l5">
+                <a class="nav__link" href="mailto:victor.mendele68@gmail.com" rel="noopener">Contact</a>
+            </li>
+            <li class="nav__list__item" ref="l6">
                 <a class="nav__link" href="https://www.dropbox.com/s/b2aqhluhkwzl69b/CV.pdf?dl=0" target="_blank" rel="noopener">CV</a>
             </li>
         </ul>
@@ -48,8 +51,8 @@ export default {
         FontAwesomeIcon
     },
     mounted () {
-        let { nav, l1, l2, l3, l4, l5, icons } = this.$refs
-        let l = [l1, l2, l3, l4, l5]
+        let { nav, l1, l2, l3, l4, l5, l6, icons } = this.$refs
+        let l = [l1, l2, l3, l4, l5, l6]
 
         this.timeline = new TimelineMax({ paused: true })
             .fromTo (nav, .001, { display: 'none' }, { display: 'grid' })

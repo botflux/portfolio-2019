@@ -45,6 +45,14 @@ const router = new Router({
       }
     },
     {
+      path:'/skill',
+      name: 'skill',
+      components: {
+        default: () => import('./views/Skills.vue'),
+        footer: () => import('./components/SkillFooter.vue')
+      }
+    },
+    {
       path: '/project',
       name: 'projects',
       components: {
