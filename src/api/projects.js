@@ -45,7 +45,7 @@ const data = [
     <div class="project__body grid grid--gapped">
         <div class="project__body__element grid__column--4 grid__column--8--sm grid__column--6--lg mb-1">
             <h2 class="heading--2 heading mb-2">Difficultés</h2>
-            <p class="text">La difficultés dans ce projet a été de travailler avec des personnes qui n'avaient pas forcément toutes le même niveau ce qui a créé des différences dans la vitesse de travail. Ces différences ont été compensé par le développement de librairies en commun lors ce que s'était possible.</p>
+            <p class="text">La difficulté dans ce projet a été de travailler avec des personnes qui n'avaient pas forcément toutes le même niveau ce qui a créé des différences dans la vitesse de travail. Ces différences ont été compensé par le développement de librairies en commun lors ce que s'était possible.</p>
         </div>
         <div class="project__body__element grid__column--4 grid__column--8--sm grid__column--6--lg mb-1">
             <h2 class="heading heading--2 grid__column--4 mb-2">Mon rôle</h2>
