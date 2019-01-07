@@ -1,25 +1,5 @@
 <template>
-    <section class="project" v-if="!$apollo.loading">
-        <header class="project__header mb-1">
-            <h2 class="heading heading--1 grid__column">Projets</h2>
-            <h1 class="heading heading--3">{{ project.title }}</h1>
-        </header>
-        <p class="text mb-1">{{ project.description }}</p>
-        <img :src="project.filename" :alt="project.title" class="project__img mb-1">
-        <div class="project__body grid grid--gapped">
-            <div class="project__body__element grid__column--4 grid__column--8--sm grid__column--6--lg mb-1">
-                <h2 class="heading--2 heading mb-2">Difficultés</h2>
-                <p class="text">{{ project.difficulties }}</p>
-            </div>
-            <div class="project__body__element grid__column--4 grid__column--8--sm grid__column--6--lg mb-1">
-                <h2 class="heading heading--2 grid__column--4 mb-2">Équipe</h2>
-                <p class="text">{{ project.team }}</p>
-            </div>
-            <div class="project__body__element grid__column--4 grid__column--8--sm grid__column--6--lg mb-1">
-                <h2 class="heading heading--2 grid__column--4 mb-2">Mon rôle</h2>
-                <p class="text">{{ project.role }}</p>
-            </div>
-        </div>
+    <section class="project" v-if="!$apollo.loading" v-html="project.body">
     </section>
     <pulse-loader color="#000000" v-else class="project__loader"></pulse-loader>
 </template>
@@ -68,7 +48,10 @@ export default {
 
 <style lang="scss">
     @import "../assets/styles/_functions.scss";
-    
+    .hashtag {
+        color: rgba(0,0,0,.4);
+    }
+
     .project {
         &__img {
             width: 100%;
