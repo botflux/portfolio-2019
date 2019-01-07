@@ -128,7 +128,9 @@ export default {
       display: block;
       padding-left: var(--side-gutter);
       padding-right: var(--side-gutter);
-      
+      align-content: center;
+      align-items: center;
+
       display: flex;
       //align-items: center;
       margin: 60px 0;
