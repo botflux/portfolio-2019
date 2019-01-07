@@ -1,8 +1,10 @@
 <template>
-    <div class="menu-icon" @click="changeState()">
-        <span ref="line_1" class="menu-icon__element menu-icon__element--1"></span>
-        <span ref="line_2" class="menu-icon__element menu-icon__element--2"></span>
-        <span ref="line_3" class="menu-icon__element"></span>
+    <div class="menu-icon" @click="changeState()" ref="container">
+        <div class="menu-icon__wrapper" ref="button">
+            <span ref="line_1" class="menu-icon__element menu-icon__element--1"></span>
+            <span ref="line_2" class="menu-icon__element menu-icon__element--2"></span>
+            <span ref="line_3" class="menu-icon__element"></span>
+        </div>
     </div>
 </template>
 
@@ -14,10 +16,9 @@ import { TimelineMax } from 'gsap'
 export default {
     name: 'MenuIcon',
     mounted() {
-        
-        const { line_1, line_2, line_3 } = this.$refs
+        const { line_1, line_2, line_3, container, button } = this.$refs
 
-        this.timeline = new TimelineMax()
+        this.timeline = new TimelineMax({ paused: true})
             .fromTo(line_2, .1, {
                 opacity: 1,
                 transform: "translate(0)",
@@ -39,7 +40,6 @@ export default {
             }, {
                 transform: "translate(0, -11px) rotate(45deg)"
             })
-            .pause()
     },
     data() {
         return {
@@ -70,9 +70,26 @@ export default {
 
 <style lang="scss">
     .menu-icon {
+        cursor: pointer;
+        margin-left: calc(var(--padding-overlay) * -1);
+        margin-right: calc(var(--padding-overlay) * -1);
+
+        margin-top: calc(var(--padding-overlay-vertical) * -1);
+        margin-bottom: calc(var(--padding-overlay-vertical) * -1);
+
+        padding-left: var(--padding-overlay);
+        padding-right: var(--padding-overlay);
+
+        padding-top: var(--padding-overlay-vertical);
+        padding-bottom: var(--padding-overlay-vertical);
+
         display: grid;
         width: 43px;
-        grid-gap: 9px;
+
+        &__wrapper {
+            display: grid;
+            grid-gap: 9px;
+        }
 
         &__element {
             height: 2px;
