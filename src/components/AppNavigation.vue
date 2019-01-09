@@ -2,7 +2,7 @@
     <nav class="nav" ref="nav">
         <ul class="nav__list">
             <li class="nav__list__item" ref="l1">
-                <router-link class="nav__link" :to="{ 'name': 'home' }" @click.native="changeState()">Acceuil</router-link>
+                <router-link class="nav__link" :to="{ 'name': 'home' }" @click.native="changeState()">Accueil</router-link>
             </li>
             <li class="nav__list__item" ref="l2">
                 <router-link class="nav__link" :to="{ 'name': 'about' }" @click.native="changeState()">A propos</router-link>
@@ -14,12 +14,10 @@
                 <router-link class="nav__link" :to="{ 'name': 'projects' }" @click.native="changeState()">Projets</router-link>
             </li>
             <li class="nav__list__item" ref="l5">
-                <a class="nav__link" href="mailto:victor.mendele68@gmail.com" rel="noopener">Contact</a>
-            </li>
-            <li class="nav__list__item" ref="l6">
                 <a class="nav__link" href="https://www.dropbox.com/s/b2aqhluhkwzl69b/CV.pdf?dl=0" target="_blank" rel="noopener">CV</a>
             </li>
         </ul>
+        <p class="heading text" ref="mail">victor.mendele68[at]gmail[dot]com</p>
         <div class="nav__icons" ref="icons">
             <a href="https://www.pinterest.fr/mendelevictor/" rel="noopener" target="_blank">
                 <font-awesome-icon :icon="['fab', 'pinterest']" class="nav__icon"></font-awesome-icon>
@@ -51,13 +49,14 @@ export default {
         FontAwesomeIcon
     },
     mounted () {
-        let { nav, l1, l2, l3, l4, l5, l6, icons } = this.$refs
-        let l = [l1, l2, l3, l4, l5, l6]
+        let { nav, l1, l2, l3, l4, l5, icons, mail } = this.$refs
+        let l = [l1, l2, l3, l4, l5]
 
         this.timeline = new TimelineMax({ paused: true })
             .fromTo (nav, .001, { display: 'none' }, { display: 'grid' })
             .fromTo (nav, .3, { transform: 'scale(.9)', opacity: 1 }, { transform: 'scale(1)', opacity: 1} )
             .staggerFromTo (l, .1, {transform: 'translate(-100px)', opacity: 0}, { transform: 'translate(0)', opacity: 1 }, .1)
+            .fromTo(mail, .1, { transform: 'translate(-100px)', opacity:0 }, { transform: 'translate(0)', opacity: 1 })
             .fromTo (icons, .2, { opacity: 0 }, { opacity: 1 })
     },
     data() {

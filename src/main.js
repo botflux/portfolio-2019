@@ -5,6 +5,7 @@ import store from './store'
 import './registerServiceWorker'
 import './vue-progressbar'
 import { createProvider } from './vue-apollo'
+import './font-loader'
 
 Vue.config.productionTip = false
 
