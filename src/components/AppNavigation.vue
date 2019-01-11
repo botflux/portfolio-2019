@@ -19,20 +19,24 @@
         </ul>
         <p class="heading text" ref="mail">victor.mendele68[at]gmail[dot]com</p>
         <div class="nav__icons" ref="icons">
-            <a href="https://www.pinterest.fr/mendelevictor/" rel="noopener" target="_blank">
+            <a href="https://www.pinterest.fr/mendelevictor/" rel="noopener" target="_blank" class="nav__icons__element">
                 <font-awesome-icon :icon="['fab', 'pinterest']" class="nav__icon"></font-awesome-icon>
+                <span class="nav__icons__element__text">Pinterest</span>
             </a>
             
-            <a href="https://codepen.io/botflux/" rel="noopener" target="_blank">
+            <a href="https://codepen.io/botflux/" rel="noopener" target="_blank" class="nav__icons__element">
                 <font-awesome-icon :icon="['fab', 'codepen']" class="nav__icon"></font-awesome-icon>
+                <span class="nav__icons__element__text">Codepen</span>
             </a>
             
-            <a href="https://github.com/botflux" rel="noopener" target="_blank">
+            <a href="https://github.com/botflux" rel="noopener" target="_blank" class="nav__icons__element">
                 <font-awesome-icon :icon="['fab', 'github']" class="nav__icon"></font-awesome-icon>
+                <span class="nav__icons__element__text">Github</span>
             </a>
             
-            <a href="https://www.linkedin.com/in/victor-mendele-698517154/" rel="noopener" target="_blank">
+            <a href="https://www.linkedin.com/in/victor-mendele-698517154/" rel="noopener" target="_blank" class="nav__icons__element">
                 <font-awesome-icon :icon="['fab', 'linkedin']" class="nav__icon"></font-awesome-icon>
+                <span class="nav__icons__element__text">Linkedin</span>
             </a>
         </div>
     </nav>    
@@ -88,16 +92,33 @@ export default {
 
 
 <style lang="scss">
+    @import "../assets/styles/_mixins.scss";
+
     .nav {
         display: none;
         padding-left: 3rem;
         align-content: center;
         grid-gap: 3rem;
 
-        &__icon {
+        &__icons {
             font-size: 2rem;
             color: var(--text-primary);
-            padding: 1rem;
+            display: flex;
+
+            &__element {
+                color: var(--text-primary);
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+
+                &__text {
+                    font-size: 1rem;
+                    padding-left: 0.8rem;
+                    padding-right: 1.3rem;
+
+                    @include font-monospace();
+                }
+            }
         }
 
         &__list {
