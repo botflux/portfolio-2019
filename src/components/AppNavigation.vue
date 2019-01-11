@@ -1,5 +1,5 @@
 <template>
-    <nav class="nav" ref="nav">
+    <nav class="nav" ref="nav" role="dialog" aria-label="Navigation modal">
         <ul class="nav__list">
             <li class="nav__list__item" ref="l1">
                 <router-link class="nav__link" :to="{ 'name': 'home' }" @click.native="changeState()">Accueil</router-link>

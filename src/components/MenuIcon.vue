@@ -1,6 +1,6 @@
 <template>
-    <div class="menu-icon" @click="changeState()" ref="container">
-        <div class="menu-icon__wrapper" ref="button">
+    <div class="menu-icon" @click="changeState()" role="button" aria-label="Navigation button">
+        <div class="menu-icon__wrapper">
             <span ref="line_1" class="menu-icon__element menu-icon__element--1"></span>
             <span ref="line_2" class="menu-icon__element menu-icon__element--2"></span>
             <span ref="line_3" class="menu-icon__element"></span>
@@ -16,7 +16,7 @@ import { TimelineMax } from 'gsap'
 export default {
     name: 'MenuIcon',
     mounted() {
-        const { line_1, line_2, line_3, container, button } = this.$refs
+        const { line_1, line_2, line_3 } = this.$refs
 
         this.timeline = new TimelineMax({ paused: true})
             .fromTo(line_2, .1, {
